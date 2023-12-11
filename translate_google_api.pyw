@@ -133,6 +133,7 @@ def speakMyText():
             pygame.mixer.music.play()
             audio_playing = True
 
+
 def speakTransText():
     global audio_playing
     
@@ -178,7 +179,7 @@ def paste_text(event):
     Input_text.event_generate("<<Paste>>")
 
 
-def cut_text():
+def cut_text(event):
     Input_text.event_generate("<<Cut>>")
 
 
@@ -191,7 +192,7 @@ def select_all_text(text_widget):
         text_widget.event_generate("<<SelectAll>>")
 
 
-def clear_text():
+def clear_text(event): 
     Input_text.delete("1.0", END)
 
 
@@ -217,25 +218,25 @@ def toggle_autodetect():
 # WIDGETS
 
 
-logo = os.path.join(basedir, "icon\\logo.png")
+logo = os.path.join(basedir, "icon\\earth_flag.png")
 imagen = Image.open(logo)
-resized_image = imagen.resize((150, 40)) 
+resized_image = imagen.resize((55, 40)) 
 logo = ImageTk.PhotoImage(resized_image) 
 
 
 context_menu1 = Menu(root, tearoff=0)
 context_menu1.add_command(label="Copiar", command=lambda: copy_text(Input_text))
-context_menu1.add_command(label="Pegar", command=paste_text)
-context_menu1.add_command(label="Cortar", command=cut_text)
+context_menu1.add_command(label="Pegar", command=lambda: paste_text(Input_text))
+context_menu1.add_command(label="Cortar", command=lambda: cut_text(Input_text))
 context_menu1.add_command(label="Seleccionar todo", command=lambda: select_all_text(Input_text))
-context_menu1.add_command(label="Limpiar", command=clear_text)
+context_menu1.add_command(label="Limpiar", command=lambda: clear_text(Input_text))
 
 
 context_menu2 = Menu(root, tearoff=0)
 context_menu2.add_command(label="Copiar", command=lambda: copy_text(Output_text))
 context_menu2.add_command(label="Seleccionar todo", command=lambda: select_all_text(Output_text))
 
-Label(root, image = logo).place(x = 5, y = 5)
+Label(root, image = logo, bg = 'light blue').place(x = 940, y = 5)
 
 #Label(root,text = "Enter Text", font = 'arial 13 bold', bg ='white smoke').place(x=165, y=70)
 
@@ -243,12 +244,13 @@ Label(root, image = logo).place(x = 5, y = 5)
 # toma el contenido de la caja de texto
 Input_text = Text(root, font = "arial 10 bold", width = 50, height = 5, wrap = WORD, padx = 5, pady = 5)
 Input_text.place(x = 30, y = 130)
+
 #input_text_content = Input_text.get("1.0", "end-1c")
 Input_text.bind("<Button-3>", lambda event: show_context_menu(event, Input_text))
 Input_text.bind("<Control-c>", lambda event: copy_text(Input_text)) 
-Input_text.bind("<Control-x>", cut_text)
+Input_text.bind("<Control-x>", lambda event: cut_text(Input_text))
 Input_text.bind("<Control-a>", lambda event: select_all_text(Input_text)) 
-Input_text.bind("<Control-v>", paste_text)
+Input_text.bind("<Control-v>", lambda event: paste_text(event))
 
 
 
