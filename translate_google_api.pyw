@@ -447,7 +447,7 @@ bg = 'white smoke', activebackground = '#36454F')
 speakTransText_btn.configure(cursor='hand2')
 speakTransText_btn.bind("<Enter>", lambda event: button_hover(event, speakTransText_btn))
 speakTransText_btn.bind("<Leave>", lambda event: speakTransText_btn.configure(background='white smoke'))
-speakTransText_btn.place(x = 579, y = 80)
+speakTransText_btn.place(x = 5, y = 80)
 
 # Estilo de botón
 style.map("TButton", background=[('active', '#36454F')])
