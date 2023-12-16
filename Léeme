@@ -1,0 +1,5 @@
+La aplicación es un traductor que utiliza la API Google Translate (googletrans) para realizar traducciones. La API Google Translate es una herramienta poderosa que permite traducir texto de un idioma a otro utilizando modelos de traducción avanzados.
+
+Al usar la biblioteca googletrans en la aplicación, se pueden enviar solicitudes a la API de Google Translate y recibir las traducciones correspondientes. La biblioteca proporciona métodos para detectar automáticamente el idioma de origen y realizar traducciones en varios idiomas.
+
+En resumen, la aplicación utiliza la API Google Translate a través de la biblioteca googletrans para ofrecer servicios de traducción de texto entre diferentes idiomas.
